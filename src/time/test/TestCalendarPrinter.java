@@ -24,16 +24,23 @@ public class TestCalendarPrinter {
         int offsetWeekDays = firstDayOfMonth.getDayOfWeek().getValue() % 7;
         System.out.println("Su Mo Tu We Th Fr Sa ");
         for (int i = 0; i < offsetWeekDays; i++) {
+            //몇개 띄울지에 대한 계산
             System.out.print(" ");
         }
 
+
+
+        //날짜를 반복해서 돌리는 것이 필요
         LocalDate dayIterator = firstDayOfMonth;
+        //이번달말(다음달 직전까지)
         while (dayIterator.isBefore(firstDayOfNextMonth)) {
             System.out.printf("%2d ", dayIterator.getDayOfMonth());
+            //토요일에서 enter쳐주는 코드
             if (dayIterator.getDayOfWeek() == DayOfWeek.SATURDAY) {
                 System.out.println();
             }
             dayIterator = dayIterator.plusDays(1);
+            //하루 증가시킴
         }
     }
 }
